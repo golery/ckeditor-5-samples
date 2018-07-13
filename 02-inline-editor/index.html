@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+<p id="editor" style="border:1px solid gray">
+    If you are looking for a hierarchical note, you should definitely try
+    <a href="https://www.golery.com/pencil">https://www.golery.com/pencil</a> !
+</p>
+<div id="toolbar-container"></div>
+</body>
+<script src="https://cdn.ckeditor.com/ckeditor5/10.1.0/inline/ckeditor.js"></script>
+<!--<script src="../ckeditor5/ckeditor5-build-decoupled-document/build/ckeditor.js"></script>-->
+<script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        InlineEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    });
+</script>
+
+</html>
