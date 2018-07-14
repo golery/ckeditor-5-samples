@@ -16,11 +16,7 @@ This folder is clone of https://github.com/ckeditor/ckeditor5-build-classic with
   Add builddev to build using development mode. This is optional, but it's useful for
   digging into ckeditor source code during development. Do not use this for productionN
 - In src/ckeditor.js
-  Add:
-  ClassicEditor.build = ClassicEditor.build || {};
-  ClassicEditor.build.config = ClassicEditor.defaultConfig;
-  ClassicEditor.build.plugins = ClassicEditor.builtinPlugins;
-  These configs are set by the prebuilt package but "somehow" they are not set commit into build repository
+  import and add plugins
   
 
  

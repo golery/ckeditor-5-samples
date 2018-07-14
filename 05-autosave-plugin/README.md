@@ -11,15 +11,4 @@ There are 2 ways:
 The 2nd method is a preferred way because we only have to built it once, which speed up the 
 building process.
 
-The process to build custom ckeditor
-1. Checkout repository ckeditor-build-xxx (ex: ckeditor-build-classic)
-2. npm install plugin
-3. Modify src/ckeditor.js
-   - import autosave plugin
-   - add default configuration 
-     ClassicEditor.build = ClassicEditor.build || {};
-     ClassicEditor.build.config = ClassicEditor.defaultConfig;
-     ClassicEditor.build.plugins = ClassicEditor.builtinPlugins;
-4. npm run build
-       
-
+The process of 2nd method is described in ckeditor5-samples/ckeditor5/README.md
