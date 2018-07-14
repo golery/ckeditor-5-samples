@@ -6,7 +6,7 @@
 </head>
 
 <body>
-<p id="editor" style="border:1px solid gray">
+<p id="editorholder" style="border:1px solid gray">
     If you are looking for a hierarchical note, you should definitely try
     <a href="https://www.golery.com/pencil">https://www.golery.com/pencil</a> !
 </p>
@@ -16,22 +16,29 @@
 <pre id="output"></pre>
 </body>
 
-    <script src="../ckeditor5/ckeditor5-build-classic/build/ckeditor.js"></script>
+<script src="../ckeditor5/ckeditor5-build-classic/build/ckeditor.js"></script>
 <!--<script src="https://cdn.ckeditor.com/ckeditor5/10.1.0/classic/ckeditor.js"></script>-->
 <script>
-    document.addEventListener("DOMContentLoaded",   function () {
-        let config = { autosave: ()=> save(editor)};
-         ClassicEditor
-            .create(document.querySelector('#editor'), config)
-            .then( editor => {
-                window.myEditor = editor;
-            } )
+    document.addEventListener("DOMContentLoaded", function () {
+        let config = {
+            autosave: {
+                save: doSave
+            }
+        };
+        ClassicEditor
+            .create(document.querySelector('#editorholder'), config)
+            .then(editor => {
+                window.editor = editor;
+            })
             .catch(error => {
                 console.error(error);
             });
     });
 
-    function save(editor) {
+    function doSave() {
+        if (!window.editor) return;
+        let editor = window.editor;
+        console.log(editor.model.document.version);
         console.log(editor.getData());
         return true;
     }
