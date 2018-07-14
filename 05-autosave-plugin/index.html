@@ -23,8 +23,10 @@
         let config = {
             autosave: {
                 save: doSave
-            }
+            },
+            plugins: ClassicEditor.builtinPlugins
         };
+        config = Object.assign(config, ClassicEditor.defaultConfig);
         ClassicEditor
             .create(document.querySelector('#editorholder'), config)
             .then(editor => {
@@ -38,8 +40,10 @@
     function doSave() {
         if (!window.editor) return;
         let editor = window.editor;
-        console.log(editor.model.document.version);
+        let version = editor.model.document.version;
+        console.log(version);
         console.log(editor.getData());
+        document.querySelector("#output").innerText = "Saved version "+version;
         return true;
     }
 </script>
