@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+<p id="editorholder" style="border:1px solid gray">
+    If you are looking for a hierarchical note, you should definitely try
+    <a href="https://www.golery.com/pencil">https://www.golery.com/pencil</a> !
+</p>
+
+<br/>
+<pre id="output"></pre>
+</body>
+
+<script src="../ckeditor5/ckeditor5-build-classic/build/ckeditor.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let config = {
+            autosave: {
+                save: doSave
+            },
+            plugins: ClassicEditor.builtinPlugins
+        };
+        config = Object.assign(config, ClassicEditor.defaultConfig);
+        ClassicEditor
+            .create(document.querySelector('#editorholder'), config)
+            .then(editor => {
+                window.editor = editor;
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    });
+
+    function doSave() {
+        if (!window.editor) return;
+        let editor = window.editor;
+        let version = editor.model.document.version;
+        console.log(version);
+        console.log(editor.getData());
+        document.querySelector("#output").innerText = "Saved version "+version;
+        return true;
+    }
+</script>
+
+</html>
